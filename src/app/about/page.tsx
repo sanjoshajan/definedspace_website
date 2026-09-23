@@ -17,7 +17,7 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Page Hero Header */}
         <div className="max-w-3xl text-left space-y-3">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
             About The Studio
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-950 tracking-tight leading-tight">
@@ -41,7 +41,7 @@ export default function AboutPage() {
               From initial floor plan concept drawings to on-site construction supervision, our studio provides steadfast dedication to every phase of your project across Kasaragod and Kerala.
             </p>
             <div className="pt-2 flex items-center gap-2 text-xs font-semibold text-gray-900">
-              <MapPin className="w-4 h-4 text-emerald-700" />
+              <MapPin className="w-4 h-4 text-[#006D5B]" />
               <span>Studio HQ: Chullikara, Kasaragod, Kerala, India</span>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function AboutPage() {
         {/* Studio Core Principles */}
         <div>
           <div className="text-left mb-10 space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
               Core Principles
             </span>
             <h2 className="text-3xl font-extrabold text-gray-950">
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 rounded-xl bg-[#F9FCFA] border border-[#E4EFE7] space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#EBF7EE] flex items-center justify-center text-emerald-800">
+              <div className="w-10 h-10 rounded-lg bg-[#006D5B]/10 flex items-center justify-center text-[#006D5B]">
                 <Trees className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base text-gray-950">Climatic Sensitivity</h3>
@@ -83,7 +83,7 @@ export default function AboutPage() {
             </div>
 
             <div className="p-6 rounded-xl bg-[#F9FCFA] border border-[#E4EFE7] space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#EBF7EE] flex items-center justify-center text-emerald-800">
+              <div className="w-10 h-10 rounded-lg bg-[#006D5B]/10 flex items-center justify-center text-[#006D5B]">
                 <Layers className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base text-gray-950">Spatial Flow</h3>
@@ -93,7 +93,7 @@ export default function AboutPage() {
             </div>
 
             <div className="p-6 rounded-xl bg-[#F9FCFA] border border-[#E4EFE7] space-y-3">
-              <div className="w-10 h-10 rounded-lg bg-[#EBF7EE] flex items-center justify-center text-emerald-800">
+              <div className="w-10 h-10 rounded-lg bg-[#006D5B]/10 flex items-center justify-center text-[#006D5B]">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-base text-gray-950">Structural Quality</h3>

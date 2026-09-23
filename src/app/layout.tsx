@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#83f28f',
+  themeColor: '#006D5B',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -92,8 +92,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-white text-gray-900 antialiased selection:bg-[#83f28f] selection:text-black">
+    <html lang="en">
+      <body className="bg-white text-gray-900 antialiased selection:bg-[#006D5B] selection:text-white">
         <SmoothScroll>
           <div className="flex flex-col min-h-screen">
             <Navbar />

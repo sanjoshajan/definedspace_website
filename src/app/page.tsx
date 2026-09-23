@@ -53,30 +53,25 @@ export default function HomePage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus('loading');
-    setFeedbackMsg('');
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setFormStatus('success');
-        setFeedbackMsg(data.message || 'Thank you. Your inquiry has been sent to Defined Space Architecture.');
-        setFormData({ name: '', phone: '', email: '', service: '', message: '' });
-      } else {
-        setFormStatus('error');
-        setFeedbackMsg(data.error || 'Failed to submit inquiry. Please call or WhatsApp us directly.');
-      }
-    } catch {
-      setFormStatus('error');
-      setFeedbackMsg('Network error. Please call or WhatsApp us directly.');
-    }
+    const textLines = [
+      `*New Project Inquiry - Defined Space Architecture*`,
+      ``,
+      `*Name:* ${formData.name.trim()}`,
+      `*Phone:* ${formData.phone.trim()}`,
+      ...(formData.email.trim() ? [`*Email:* ${formData.email.trim()}`] : []),
+      ...(formData.service.trim() ? [`*Service Interested:* ${formData.service.trim()}`] : []),
+      ``,
+      `*Project Details / Plot:*`,
+      formData.message.trim(),
+    ];
+
+    const message = textLines.join('\n');
+    const whatsappUrl = `https://wa.me/916238908782?text=${encodeURIComponent(message)}`;
+
+    window.location.href = whatsappUrl;
   };
 
   const activeOffice = STUDIO_INFO.offices[activeOfficeIndex] || STUDIO_INFO.offices[0];
@@ -115,9 +110,9 @@ export default function HomePage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-[#83f28f] text-[11px] font-bold uppercase tracking-widest backdrop-blur-md shadow-sm"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 text-teal-300 text-[11px] font-bold uppercase tracking-widest backdrop-blur-md shadow-sm"
             >
-              <Building className="w-3.5 h-3.5 text-[#83f28f]" />
+              <Building className="w-3.5 h-3.5 text-teal-300" />
               <span>Architecture & Structural Design</span>
             </motion.div>
 
@@ -149,75 +144,53 @@ export default function HomePage() {
       {/* ========================================================================= */}
       <section id="about" className="py-20 sm:py-28 bg-[#F9FCFA] border-b border-[#E4EFE7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-6 space-y-5 text-left"
-            >
-              <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
-                About the Studio
-              </span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl space-y-6 text-left"
+          >
+            <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
+              About the Studio
+            </span>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-950 leading-tight">
-                Architectural design with structural precision and climatic clarity.
-              </h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-950 leading-tight">
+              Architectural design with structural precision and climatic clarity.
+            </h2>
 
-              <div className="space-y-3.5 text-sm sm:text-base text-gray-700 leading-relaxed font-normal">
-                <p>
-                  <strong>Defined Space Architecture</strong> is an established architectural and spatial design firm operating from our offices in <strong>Kanhangad</strong> and <strong>Chullikara</strong> in Kasaragod district, Kerala. We specialize in custom residential homes, contemporary villa elevations, spatial blueprints, and complete site execution supervision.
-                </p>
-                <p>
-                  Our architectural philosophy combines regional Kerala climatic considerations—such as natural air conduits, shaded courtyards, and sunlight orientation—with clean contemporary aesthetics and enduring construction standards.
-                </p>
-              </div>
+            <div className="space-y-4 text-base sm:text-lg text-gray-700 leading-relaxed font-normal">
+              <p>
+                <strong>Defined Space Architecture</strong> is an established architectural and spatial design firm operating from our offices in <strong>Kanhangad</strong> and <strong>Chullikara</strong> in Kasaragod district, Kerala. We specialize in custom residential homes, contemporary villa elevations, spatial blueprints, and complete site execution supervision.
+              </p>
+              <p>
+                Our architectural philosophy combines regional Kerala climatic considerations—such as natural air conduits, shaded courtyards, and sunlight orientation—with clean contemporary aesthetics and enduring construction standards.
+              </p>
+            </div>
 
-              <div className="pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-semibold text-gray-800">
-                <InteractiveCard tiltIntensity={6} className="bg-white border border-[#E4EFE7]">
-                  <div className="p-4">
-                    <p className="text-gray-500 font-normal">Expertise</p>
-                    <p className="font-bold text-gray-950 mt-1">Residential Architecture</p>
-                  </div>
-                </InteractiveCard>
-
-                <InteractiveCard tiltIntensity={6} className="bg-white border border-[#E4EFE7]">
-                  <div className="p-4">
-                    <p className="text-gray-500 font-normal">Approach</p>
-                    <p className="font-bold text-gray-950 mt-1">Climate Responsive</p>
-                  </div>
-                </InteractiveCard>
-
-                <InteractiveCard tiltIntensity={6} className="bg-white border border-[#E4EFE7]">
-                  <div className="p-4">
-                    <p className="text-gray-500 font-normal">Offices</p>
-                    <p className="font-bold text-gray-950 mt-1">Kanhangad & Chullikara</p>
-                  </div>
-                </InteractiveCard>
-              </div>
-            </motion.div>
-
-            {/* Right Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-6"
-            >
-              <InteractiveCard tiltIntensity={8} className="aspect-[4/3] bg-gray-100 border border-[#E4EFE7]">
-                <Image
-                  src="/works/project-2.jpg"
-                  alt="Defined Space Architecture Project"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
+            <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-semibold text-gray-800">
+              <InteractiveCard tiltIntensity={6} className="bg-white border border-[#E4EFE7]">
+                <div className="p-5">
+                  <p className="text-gray-500 font-normal">Expertise</p>
+                  <p className="font-bold text-gray-950 text-sm mt-1">Residential Architecture</p>
+                </div>
               </InteractiveCard>
-            </motion.div>
-          </div>
+
+              <InteractiveCard tiltIntensity={6} className="bg-white border border-[#E4EFE7]">
+                <div className="p-5">
+                  <p className="text-gray-500 font-normal">Approach</p>
+                  <p className="font-bold text-gray-950 text-sm mt-1">Climate Responsive</p>
+                </div>
+              </InteractiveCard>
+
+              <InteractiveCard tiltIntensity={6} className="bg-white border border-[#E4EFE7]">
+                <div className="p-5">
+                  <p className="text-gray-500 font-normal">Offices</p>
+                  <p className="font-bold text-gray-950 text-sm mt-1">Kanhangad & Chullikara</p>
+                </div>
+              </InteractiveCard>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -261,7 +234,7 @@ export default function HomePage() {
       <section id="projects" className="py-20 sm:py-28 bg-[#F9FCFA] border-b border-[#E4EFE7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-left space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
               House Projects
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-950">
@@ -308,7 +281,7 @@ export default function HomePage() {
       <section id="videos" className="py-20 sm:py-28 bg-white border-b border-[#E4EFE7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-left space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
               Video Showcase
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-950">
@@ -353,7 +326,7 @@ export default function HomePage() {
       <section id="contact" className="py-20 sm:py-28 bg-[#F9FCFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-left space-y-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
               Contact Us
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-950">
@@ -390,7 +363,7 @@ export default function HomePage() {
                   {/* Active Office Info */}
                   <div className="space-y-4 text-xs sm:text-sm">
                     <div className="flex items-start gap-3">
-                      <MapPin className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
+                      <MapPin className="w-4 h-4 text-[#006D5B] flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-bold text-gray-950">{activeOffice.title}</p>
                         <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
@@ -400,7 +373,7 @@ export default function HomePage() {
                           href={activeOffice.mapUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 mt-1.5 text-xs font-bold text-emerald-800 hover:underline"
+                          className="inline-flex items-center gap-1 mt-1.5 text-xs font-bold text-[#006D5B] hover:underline"
                         >
                           <Navigation className="w-3 h-3" />
                           <span>Open in Google Maps App</span>
@@ -448,9 +421,9 @@ export default function HomePage() {
                       href={STUDIO_INFO.social.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#83f28f] hover:bg-[#6ee67b] text-black font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#006D5B] hover:bg-[#005648] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <MessageCircle className="w-4 h-4 fill-white" />
                       <span>WhatsApp Direct Message</span>
                     </a>
                   </div>
@@ -485,8 +458,8 @@ export default function HomePage() {
                 </p>
 
                 {formStatus === 'success' && (
-                  <div className="mb-5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <div className="mb-5 p-3 rounded-xl bg-[#006D5B]/10 border border-[#006D5B]/25 text-[#004D40] text-xs flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-[#006D5B] flex-shrink-0" />
                     <span>{feedbackMsg}</span>
                   </div>
                 )}
@@ -588,17 +561,10 @@ export default function HomePage() {
 
                   <button
                     type="submit"
-                    disabled={formStatus === 'loading'}
-                    className="w-full sm:w-auto px-8 py-3 rounded-full bg-black hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
+                    className="w-full sm:w-auto px-8 py-3 rounded-full bg-[#006D5B] hover:bg-[#005648] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm"
                   >
-                    {formStatus === 'loading' ? (
-                      <span>Sending...</span>
-                    ) : (
-                      <>
-                        <span>Submit Project Inquiry</span>
-                        <Send className="w-3.5 h-3.5" />
-                      </>
-                    )}
+                    <span>Submit Project Inquiry</span>
+                    <Send className="w-3.5 h-3.5" />
                   </button>
                 </form>
               </div>

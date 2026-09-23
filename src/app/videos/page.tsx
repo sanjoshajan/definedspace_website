@@ -12,7 +12,7 @@ export default function VideosPage() {
     <div className="pt-28 pb-28 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-left space-y-2">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
             Video Showcase
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-950">

@@ -29,10 +29,10 @@ export const STUDIO_INFO = {
     {
       id: "kanhangad",
       title: "Kanhangad Office",
-      address: "Link SH 56, Koshanvan Kunnu, Kanhangad, Kerala 671315",
+      address: "Link SH 56, kushavankunnu, Kanhangad, Kerala 671315",
       mapUrl: "https://maps.app.goo.gl/Q6KWK3NdYgd46btR7",
       embedUrl:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3896.225916053351!2d75.0915481750697!3d12.327985087930997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba47c4492cd9d6b%3A0xf195f7fb4dd57592!2sLink%20SH%2056%2C%20Koshanvan%20Kunnu%2C%20Payannoor%2C%20Kanhangad%2C%20Kerala%20671315!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3896.225916053351!2d75.0915481750697!3d12.327985087930997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba47c4492cd9d6b%3A0xf195f7fb4dd57592!2sLink%20SH%2056%2C%20kushavankunnu%2C%20Payannoor%2C%20Kanhangad%2C%20Kerala%20671315!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
     },
     {
       id: "chullikara",

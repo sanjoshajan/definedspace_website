@@ -5,9 +5,9 @@
 @tailwind utilities;
 
 :root {
-  --accent-green: #83f28f;
-  --accent-green-hover: #6ee67b;
-  --accent-green-soft: rgba(131, 242, 143, 0.15);
+  --accent-green: #006D5B;
+  --accent-green-hover: #005648;
+  --accent-green-soft: rgba(0, 109, 91, 0.15);
   --text-dark: #0D130E;
   --text-muted: #525E55;
   --bg-page: #FFFFFF;
@@ -16,7 +16,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   color-scheme: light;
 }
 
@@ -29,7 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar with #83f28f accent */
+/* Custom Scrollbar with #006D5B accent */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -44,7 +43,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #83f28f;
+  background: #006D5B;
 }
 
 /* Glassmorphism Header */
@@ -73,8 +72,8 @@ body {
 
 /* Smooth selection */
 ::selection {
-  background-color: #83f28f;
-  color: #0D130E;
+  background-color: #006D5B;
+  color: #FFFFFF;
 }
 
 /* Hide default cursor on desktop when custom cursor active */

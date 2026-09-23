@@ -14,7 +14,7 @@ export default function WorksPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* House Projects Header */}
         <div className="text-left space-y-2">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
             House Projects
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-950">

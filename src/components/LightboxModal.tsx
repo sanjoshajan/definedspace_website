@@ -106,14 +106,14 @@ export default function LightboxModal({
               <>
                 <button
                   onClick={handlePrev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-emerald-700 text-white transition-all duration-200"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-[#006D5B] text-white transition-all duration-200"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-emerald-700 text-white transition-all duration-200"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-[#006D5B] text-white transition-all duration-200"
                   aria-label="Next photo"
                 >
                   <ChevronRight className="w-6 h-6" />

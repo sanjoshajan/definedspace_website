@@ -33,45 +33,32 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    setFeedbackMsg('');
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    const textLines = [
+      `*New Project Inquiry - Defined Space Architecture*`,
+      ``,
+      `*Name:* ${formData.name.trim()}`,
+      `*Phone:* ${formData.phone.trim()}`,
+      ...(formData.email.trim() ? [`*Email:* ${formData.email.trim()}`] : []),
+      ...(formData.service.trim() ? [`*Service Required:* ${formData.service.trim()}`] : []),
+      ``,
+      `*Project Details / Location:*`,
+      formData.message.trim(),
+    ];
 
-      const data = await res.json();
+    const message = textLines.join('\n');
+    const whatsappUrl = `https://wa.me/916238908782?text=${encodeURIComponent(message)}`;
 
-      if (res.ok) {
-        setStatus('success');
-        setFeedbackMsg(data.message || 'Thank you! Your inquiry has been sent successfully.');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: '',
-        });
-      } else {
-        setStatus('error');
-        setFeedbackMsg(data.error || 'Failed to send message. Please try calling directly.');
-      }
-    } catch {
-      setStatus('error');
-      setFeedbackMsg('Network error. Please call us directly on our studio numbers.');
-    }
+    window.location.href = whatsappUrl;
   };
 
   return (
     <div className="pt-28 pb-28 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl text-left space-y-2 mb-12">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-black bg-[#83f28f] px-3 py-1 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-white bg-[#006D5B] px-3.5 py-1 rounded-full">
             Contact
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-950">
@@ -92,7 +79,7 @@ export default function ContactPage() {
 
               <div className="space-y-4 text-xs sm:text-sm">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#006D5B] flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-gray-950">Address</p>
                     <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
@@ -103,7 +90,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-[#006D5B] flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-gray-950">Phone Numbers</p>
                     <div className="text-xs text-gray-700 mt-0.5 space-y-1">
@@ -118,7 +105,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#006D5B] flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-gray-950">Email</p>
                     <a href={`mailto:${STUDIO_INFO.email}`} className="text-xs text-gray-700 hover:underline break-all block mt-0.5 font-medium">
@@ -128,7 +115,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Clock className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <Clock className="w-4 h-4 text-[#006D5B] flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-gray-950">Working Hours</p>
                     <p className="text-xs text-gray-600 mt-0.5">{STUDIO_INFO.hours}</p>
@@ -141,9 +128,9 @@ export default function ContactPage() {
                   href={STUDIO_INFO.social.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#83f28f] hover:bg-[#6ee67b] text-black font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#006D5B] hover:bg-[#005648] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4 fill-white" />
                   <span>WhatsApp Message</span>
                 </a>
               </div>
@@ -176,8 +163,8 @@ export default function ContactPage() {
               </p>
 
               {status === 'success' && (
-                <div className="mb-5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <div className="mb-5 p-3 rounded-xl bg-[#006D5B]/10 border border-[#006D5B]/25 text-[#004D40] text-xs flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#006D5B] flex-shrink-0" />
                   <span>{feedbackMsg}</span>
                 </div>
               )}
@@ -203,7 +190,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Rahul Nair"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#83f28f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#006D5B]"
                     />
                   </div>
 
@@ -219,7 +206,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#83f28f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#006D5B]"
                     />
                   </div>
                 </div>
@@ -236,7 +223,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="name@domain.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#83f28f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#006D5B]"
                     />
                   </div>
 
@@ -249,7 +236,7 @@ export default function ContactPage() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#83f28f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#006D5B]"
                     >
                       <option value="">Select a service...</option>
                       {STUDIO_SERVICES.map((srv) => (
@@ -274,23 +261,16 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your plot size, location in Kerala, and requirements..."
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#83f28f]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#E4EFE7] text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#006D5B]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={status === 'loading'}
-                  className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#83f28f] hover:bg-[#6ee67b] text-black font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
+                  className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#006D5B] hover:bg-[#005648] text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-sm"
                 >
-                  {status === 'loading' ? (
-                    <span>Submitting...</span>
-                  ) : (
-                    <>
-                      <span>Submit Inquiry</span>
-                      <Send className="w-3.5 h-3.5" />
-                    </>
-                  )}
+                  <span>Submit Inquiry</span>
+                  <Send className="w-3.5 h-3.5" />
                 </button>
               </form>
             </div>
