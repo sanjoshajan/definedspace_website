@@ -11,10 +11,14 @@ import {
   AlertCircle,
   MessageCircle,
   ArrowUpRight,
+  Navigation,
 } from 'lucide-react';
 import { STUDIO_INFO, STUDIO_SERVICES } from '@/data/portfolioData';
 
 export default function ContactPage() {
+  const [activeOfficeIndex, setActiveOfficeIndex] = useState(0);
+  const activeOffice = STUDIO_INFO.offices[activeOfficeIndex];
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,7 +69,7 @@ export default function ContactPage() {
             Contact Studio
           </h1>
           <p className="text-sm sm:text-base text-gray-600">
-            Chullikara, Kanhangad, Kerala. Send us a message or call directly.
+            Kanhangad &amp; Chullikara, Kerala. Send us a message or call directly.
           </p>
         </div>
 
@@ -73,23 +77,51 @@ export default function ContactPage() {
           {/* Left: Contact Details Cards & Socials */}
           <div className="lg:col-span-5 space-y-6 text-left">
             <div className="bg-[#F9FCFA] p-6 sm:p-7 rounded-2xl border border-[#E4EFE7] space-y-5">
-              <h3 className="font-bold text-base text-gray-950 border-b border-[#E4EFE7] pb-3">
-                Studio Directory
-              </h3>
+              <div className="flex items-center justify-between border-b border-[#E4EFE7] pb-3">
+                <h3 className="font-bold text-base text-gray-950">
+                  Studio Directory
+                </h3>
+                {/* Office Switcher Tabs */}
+                <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-lg">
+                  {STUDIO_INFO.offices.map((office, idx) => (
+                    <button
+                      key={office.id}
+                      type="button"
+                      onClick={() => setActiveOfficeIndex(idx)}
+                      className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all ${
+                        activeOfficeIndex === idx
+                          ? 'bg-[#006D5B] text-white shadow-xs'
+                          : 'text-gray-700 hover:text-black'
+                      }`}
+                    >
+                      {office.title.replace(' Office', '')}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
               <div className="space-y-4 text-xs sm:text-sm">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-[#006D5B] flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-bold text-gray-950">Address</p>
+                    <p className="font-bold text-gray-950">{activeOffice.title}</p>
                     <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">
-                      Defined Space Architecture<br />
-                      Chullikara, Kanhangad, Kerala, India
+                      {activeOffice.address}
                     </p>
+                    <a
+                      href={activeOffice.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 mt-2 text-xs font-bold text-[#006D5B] hover:underline"
+                    >
+                      <Navigation className="w-3.5 h-3.5" />
+                      <span>Open in Google Maps App</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-3 pt-2 border-t border-gray-100">
                   <Phone className="w-4 h-4 text-[#006D5B] flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-gray-950">Phone Numbers</p>
@@ -131,7 +163,7 @@ export default function ContactPage() {
                   className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#006D5B] hover:bg-[#005648] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>WhatsApp Message</span>
+                  <span>WhatsApp Direct Message</span>
                 </a>
               </div>
             </div>
@@ -139,8 +171,9 @@ export default function ContactPage() {
             {/* Embedded Google Map */}
             <div className="rounded-2xl overflow-hidden border border-[#E4EFE7] shadow-sm bg-white h-[260px]">
               <iframe
-                title="Defined Space Architecture Studio Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15582.428574187063!2d75.1432!3d12.3854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4772b220d9e43%3A0x89dcbc6551b94f6f!2sChullikkara%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                key={activeOffice.id}
+                title={`Defined Space Architecture ${activeOffice.title}`}
+                src={activeOffice.embedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

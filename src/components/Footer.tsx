@@ -64,11 +64,11 @@ export default function Footer() {
                 <MessageCircle className="w-4 h-4" />
               </a>
               <a
-                href={STUDIO_INFO.social.mapsKanhangad}
+                href={STUDIO_INFO.social.maps}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Kanhangad Google Maps"
-                title="Kanhangad Office Location"
+                aria-label="Google Maps"
+                title="Defined Space Google Maps Location"
                 className="w-8 h-8 rounded-full bg-zinc-900 hover:bg-[#006D5B] text-gray-300 hover:text-white flex items-center justify-center transition-colors"
               >
                 <MapPin className="w-4 h-4" />

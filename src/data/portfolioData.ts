@@ -37,10 +37,11 @@ export const STUDIO_INFO = {
     {
       id: "chullikara",
       title: "Chullikara Office",
-      address: "Chullikara, Kasaragod District, Kerala, India",
-      mapUrl: "https://maps.app.goo.gl/ifajpjWjzVjrZGfD8?g_st=ac",
+      address: "DEFINED SPACE, Chullikkara, Kanhangad, Kerala 671531",
+      mapUrl:
+        "https://www.google.com/maps/place/DEFINED+SPACE/@12.4140956,75.2335265,14.45z/data=!4m15!1m8!3m7!1s0x3ba489ec130e71a1:0xee6e725296e1d6c3!2sChullikkara,+Keralam!3b1!8m2!3d12.4138685!4d75.2318624!16s%2Fg%2F1xb2b_m9!3m5!1s0x3ba489f218711455:0x810be598d1388ae7!8m2!3d12.4136423!4d75.2307187!16s%2Fg%2F11rxmrgf1m?hl=en&entry=ttu&g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D",
       embedUrl:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15582.428574187063!2d75.1432!3d12.3854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4772b220d9e43%3A0x89dcbc6551b94f6f!2sChullikkara%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3893.3601557997973!2d75.22814377507304!3d12.413642287848604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba489f218711455%3A0x810be598d1388ae7!2sDEFINED%20SPACE!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
     },
   ],
   phones: [
@@ -52,8 +53,9 @@ export const STUDIO_INFO = {
     instagram: "https://www.instagram.com/definedspace.architecture",
     facebook: "https://www.facebook.com/definedspace.architecture",
     mapsKanhangad: "https://maps.app.goo.gl/SzskAmzWpKUpA8866?g_st=ac",
-    mapsChullikara: "https://maps.app.goo.gl/ifajpjWjzVjrZGfD8?g_st=ac",
-    maps: "https://maps.app.goo.gl/SzskAmzWpKUpA8866?g_st=ac",
+    mapsChullikara:
+      "https://www.google.com/maps/place/DEFINED+SPACE/@12.4140956,75.2335265,14.45z/data=!4m15!1m8!3m7!1s0x3ba489ec130e71a1:0xee6e725296e1d6c3!2sChullikkara,+Keralam!3b1!8m2!3d12.4138685!4d75.2318624!16s%2Fg%2F1xb2b_m9!3m5!1s0x3ba489f218711455:0x810be598d1388ae7!8m2!3d12.4136423!4d75.2307187!16s%2Fg%2F11rxmrgf1m?hl=en&entry=ttu&g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D",
+    maps: "https://www.google.com/maps/place/DEFINED+SPACE/@12.4140956,75.2335265,14.45z/data=!4m15!1m8!3m7!1s0x3ba489ec130e71a1:0xee6e725296e1d6c3!2sChullikkara,+Keralam!3b1!8m2!3d12.4138685!4d75.2318624!16s%2Fg%2F1xb2b_m9!3m5!1s0x3ba489f218711455:0x810be598d1388ae7!8m2!3d12.4136423!4d75.2307187!16s%2Fg%2F11rxmrgf1m?hl=en&entry=ttu&g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D",
     whatsapp: "https://wa.me/916238908782",
   },
   hours: "Monday – Saturday: 9:00 AM – 6:30 PM",

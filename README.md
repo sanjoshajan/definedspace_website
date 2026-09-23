@@ -17,7 +17,7 @@ Built with **Next.js 14+ (App Router, TypeScript)**, **Tailwind CSS**, **Framer 
 - **Socials**:
   - [Instagram](https://www.instagram.com/definedspace.architecture)
   - [Kushavankunnu Office Map](https://maps.app.goo.gl/SzskAmzWpKUpA8866?g_st=ac)
-  - [Chullikara Office Map](https://maps.app.goo.gl/ifajpjWjzVjrZGfD8?g_st=ac)
+  - [Chullikara Office Map](https://www.google.com/maps/place/DEFINED+SPACE/@12.4140956,75.2335265,14.45z/data=!4m15!1m8!3m7!1s0x3ba489ec130e71a1:0xee6e725296e1d6c3!2sChullikkara,+Keralam!3b1!8m2!3d12.4138685!4d75.2318624!16s%2Fg%2F1xb2b_m9!3m5!1s0x3ba489f218711455:0x810be598d1388ae7!8m2!3d12.4136423!4d75.2307187!16s%2Fg%2F11rxmrgf1m?hl=en&entry=ttu&g_ep=EgoyMDI2MDkyMC4wIKXMDSoASAFQAw%3D%3D)
   - [WhatsApp Instant Chat](https://wa.me/916238908782)
 
 ---
