@@ -16,8 +16,8 @@ Built with **Next.js 14+ (App Router, TypeScript)**, **Tailwind CSS**, **Framer 
 - **Email**: `definedspacearchitecture@gmail.com`
 - **Socials**:
   - [Instagram](https://www.instagram.com/definedspace.architecture)
-  - [Facebook](https://www.facebook.com/definedspace.architecture)
-  - [Google Maps Location](https://maps.app.goo.gl/kwPoLzosjVQAtWuy6)
+  - [Kushavankunnu Office Map](https://maps.app.goo.gl/SzskAmzWpKUpA8866?g_st=ac)
+  - [Chullikara Office Map](https://maps.app.goo.gl/ifajpjWjzVjrZGfD8?g_st=ac)
   - [WhatsApp Instant Chat](https://wa.me/916238908782)
 
 ---
